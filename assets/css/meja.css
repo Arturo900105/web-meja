@@ -1,0 +1,244 @@
+@font-face {
+    font-family: "SignPainter";
+    src: url('../fonts/SignPainter.otf');
+}
+
+@font-face {
+    font-family: "kefa";
+    src: url('../fonts/Kefa.ttc');
+}
+
+@font-face {
+    font-family: "Champagne";
+    src: url('../fonts/Champagne.ttf');
+}
+
+@font-face {
+    font-family: "ChampagneBold";
+    src: url('../fonts/ChampagneBold.ttf');
+}
+
+.font-signpainter {
+    font-family: "SignPainter", serif;
+}
+
+.font-kefa {
+    font-family: "kefa", serif;
+}
+
+.font-champagne {
+    font-family: "Champagne", serif;
+}
+
+.font-champagne-bold {
+    font-family: "ChampagneBold", serif;
+}
+
+.ancla {
+    cursor: pointer;
+}
+
+.nav-inactive {
+    opacity: 0;
+    transition: all .2s;
+    z-index: -1;
+}
+
+.nav-active {
+    opacity: 1;
+    transition: all .2s;
+    z-index: 10000;
+}
+
+.fa-bars {
+    color: #ccc;
+    border: 1px solid #ccc;
+    background: #eeeeee;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+#collapseOne div {
+    cursor: pointer;
+}
+
+.break-word {
+    -ms-word-break: break-all;
+    word-break: break-all;
+}
+
+#original-nav a {
+    text-decoration: none;
+    color: #072C47;
+}
+
+#fixed-nav a {
+    text-decoration: none;
+    color: #072C47;
+}
+
+.bg-blue-meja {
+    background: #072C47;
+}
+
+.border-right-2 {
+    width: 2px;
+}
+
+.h-25-px {
+    height: 25px;
+}
+
+.bg-image {
+    background: url("../img/bg_header.jpg") no-repeat center;
+    background-size: cover;
+    height: 250px;
+    transition: all .2s;
+    margin-top: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.logo {
+    background: white;
+    width: 150px;
+    position: absolute;
+    bottom: -9px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 0 10px;
+    transition: all .2s;
+}
+
+.white-line {
+    position: absolute;
+    width: 100%;
+    background: white;
+    height: 13px;
+    bottom: 0;
+}
+
+body {
+    background: black;
+}
+
+svg {
+    width: 50px;
+    height: 50px;
+}
+
+.svg {
+    fill: white;
+}
+
+.fa-long-arrow-right {
+    font-size: 15px;
+}
+
+.over-hide {
+    overflow: hidden;
+    position: relative;
+}
+
+.over-image {
+    height: 350px;
+}
+
+.over-hide img {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.bg-black {
+    background: black;
+}
+
+.p-relative {
+    position: relative;
+}
+
+.l-triangle {
+    position: absolute;
+    height: 100px;
+    background: transparent;
+    border-top: 100px solid transparent;
+    border-left: 53vw solid #072C47;
+    bottom: 0;
+    left: 0;
+}
+
+.r-triangle {
+    position: absolute;
+    height: 100px;
+    background: transparent;
+    border-top: 100px solid transparent;
+    border-right: 53vw solid #072C47;
+    bottom: 0;
+    right: 0;
+}
+
+@media (min-width: 576px) {
+    .bg-image {
+        height: 350px;
+        margin-top: 0px;
+    }
+
+    .logo {
+        width: 200px;
+        bottom: -14px;
+    }
+
+    .white-line {
+        height: 15px;
+    }
+}
+
+@media (min-width: 768px) {
+    .bg-image {
+        height: 450px;
+    }
+
+    .logo {
+        width: 220px;
+        bottom: -17px;
+    }
+
+    .white-line {
+        height: 15px;
+    }
+}
+
+@media (min-width: 992px) {
+    .bg-image {
+        height: 550px;
+    }
+
+    .logo {
+        width: 250px;
+        bottom: -20px;
+    }
+
+    .white-line {
+        height: 15px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .bg-image {
+        height: 650px;
+    }
+
+    .logo {
+        width: 270px;
+        bottom: -22px;
+    }
+
+    .white-line {
+        height: 17px;
+    }
+}
