@@ -5,14 +5,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Meja</title>
+    <title>Meja - <?php echo ucwords($imgSet); ?></title>
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url('assets/img/favicon.png'); ?>"/>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.css'); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/meja.css'); ?>">
-    <script type="text/javascript">
-        var title = '';
-    </script>
 </head>
 <body>
 <!-- TODO COMIENZA MENÚ PARA ESCRITORIO -->
@@ -106,16 +103,69 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <!-- TODO TERMINA MENÚ FIXED -->
 
-<div class="container-fluid bg-image p-0">
-    <div class="white-line"></div>
-    <img class="logo" src="<?php echo base_url('assets/img/1.svg'); ?>" alt="">
+<div class="container-fluid p-0 detail-carousel">
+    <div id="carouselExampleControls" class="carousel slide h-100" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <?php if ($handle = opendir('assets/img/galeria/' . $imgSet)) {
+                $indice = 0;
+                while (false !== ($entry = readdir($handle))) {
+                    if ($entry != "." && $entry != "..") {
+                        ?>
+                        <?php if ($indice == 0) { ?>
+                            <li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
+                        <?php } else { ?>
+                            <li data-target="#carouselExampleControls" data-slide-to="<?php echo $indice; ?>"></li>
+                        <?php } ?>
+                        <?php $indice++;
+                    }
+                }
+                closedir($handle);
+            } ?>
+        </ol>
+        <div class="carousel-inner h-100 align-items-center">
+            <?php if ($handle = opendir('assets/img/galeria/' . $imgSet)) {
+                $indice2 = 0;
+                while (false !== ($entry = readdir($handle))) {
+                    if ($entry != "." && $entry != "..") {
+                        ?>
+                        <?php if ($indice2 == 0) { ?>
+                            <div class="carousel-item active h-100">
+                                <img class="d-block w-100 h-100 img-carousel"
+                                     style="background-image: url('<?php echo base_url('assets/img/galeria/' . $imgSet . '/' . $entry); ?>');">
+                            </div>
+                        <?php } else { ?>
+                            <div class="carousel-item h-100">
+                                <img class="d-block w-100 h-100 img-carousel"
+                                     style="background-image: url('<?php echo base_url('assets/img/galeria/' . $imgSet . '/' . $entry); ?>');">
+                            </div>
+                        <?php } ?>
+                        <?php $indice2++;
+                    }
+                }
+                closedir($handle);
+            } ?>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
 </div>
 
-<div id="service" class="container pt-4 pb-5">
-    <div class="row text-white pt-4 pb-5">
-        <div class="col-6 col-md-3 mt-5">
-            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                 x="0px" y="0px" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
+<div id="service" class="container-fluid p-relative p-0 galeria-detail">
+    <div class="w-100 h-100 container pb-5">
+        <div class="row h-100 pb-5 align-items-center justify-content-md-cente">
+            <?php if ($imgSet != 'eventos') { ?>
+                <div class="col-md-4 card-event text-white">
+                    <div class="card-bg bg-blue-alpha-meja p-3">
+                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink"
+                             x="0px" y="0px" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;"
+                             xml:space="preserve">
 <path class="svg" d="M263.1,440.2V296.6l1-8.6l7.6-1.9c2.9-1,5.7-1.9,8.6-3.8c23.8-9.5,44.7-31.4,56.1-65.6c11.4-35.2,12.3-83.6-3.8-144.5
 	c-4.7-16.1-10.4-32.3-17.1-49.4l-137.9,2.8c-3.8,9.5-5.7,19-8.5,27.6c-18,70.3-17.1,124.5-3.8,162.6c13.3,37.1,36.1,59.9,61.8,68.5
 	c1.9,0.9,2.9,0.9,4.7,1.9l8.6,1.9v8.6l-1,142.6v7.6l-6.7,2.9l-69.4,26.6h173l-66.6-25.7l-6.6-2.8V440.2z M285.9,304.2L285,432.6
@@ -125,18 +175,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	c8.6,20,15.2,40,20,59c18.1,65.6,17.1,117.9,3.8,156.9c-13.3,40.9-39,67.5-68.5,79.9C287.8,303.3,286.9,304.2,285.9,304.2
 	L285.9,304.2z"/>
 </svg>
-
-            <h1 class="h4 pt-3">Eventos</h1>
-            <p class="pt-2 pb-2">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de
-                texto.
-            </p>
-            <a href="<?php echo base_url('eventos'); ?>" class="text-uppercase small text-white">Conoce más
-                <i class="fa fa-long-arrow-right ml-3"></i>
-            </a>
-        </div>
-        <div class="col-6 col-md-3 mt-5">
-            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                 x="0px" y="0px" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
+                        <h4 class="p-2">Eventos</h4>
+                        <p>Lorem ipsum dolor sit amet, consetetuer adipiscing elit, sed diam nonumy nibh euismod
+                            tincidunt
+                            ut
+                            laoreet</p>
+                        <a href="<?php echo base_url('eventos'); ?>" class="text-uppercase text-white p-5">Conoce
+                            más</a>
+                    </div>
+                </div>
+            <?php } ?>
+            <?php if ($imgSet != 'banquetes') { ?>
+                <div class="col-md-4 card-event text-white">
+                    <div class="card-bg bg-gold-alpha-meja p-3">
+                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink"
+                             x="0px" y="0px" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;"
+                             xml:space="preserve">
 <path class="svg" d="M286,130.4c0.8-2.3,2.3-5.5,2.3-7.8c0.8-2.3,0.8-4.7,0.8-7.8c0-15.6-14.1-15.6-33.6-15.6l0,0h-4.7h-4.7l0,0
 	c-19.5,0-34.3,0-34.3,15.6c0,3.1,0,5.5,0.8,7.8c0,2.3,0.8,5.5,2.3,7.8l3.9,10.1l-10.9,2.3c-46.1,8.6-87.4,30.4-119.4,62.4
 	c-32.8,32-55.4,73.4-64.8,119.5l0,0l0,0l0,0l0,0l0,0h32h389.5h32.8c-3.1-38.3-24.2-75.7-54.6-107.7c-36.7-37.5-85.9-66.3-130.4-74.2
@@ -154,17 +209,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	c-4.7,2.3-9.4,5.5-13.3,8.6c-4.7,3.1-8.6,7-11.7,10.9c-3.9,4.7-7,8.6-9.4,13.3c-3.1,5.5-5.5,10.9-7,15.6c-1.6,3.1-2.4,5.5-3.1,8.6
 	c-0.8,2.3-1.6,5.5-2.3,7.8C114.3,281.8,114.3,282.6,113.5,285L113.5,285z"/>
 </svg>
-            <h1 class="h4 pt-3">Banquetes</h1>
-            <p class="pt-2 pb-2">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de
-                texto.
-            </p>
-            <a href="<?php echo base_url('banquetes'); ?>" class="text-uppercase small text-white">Conoce más
-                <i class="fa fa-long-arrow-right ml-3"></i>
-            </a>
-        </div>
-        <div class="col-6 col-md-3 mt-5">
-            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                 x="0px" y="0px" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
+                        <h4 class="p-2">Banquetes</h4>
+                        <p>Lorem ipsum dolor sit amet, consetetuer adipiscing elit, sed diam nonumy nibh euismod
+                            tincidunt
+                            ut
+                            laoreet</p>
+                        <a href="<?php echo base_url('banquetes'); ?>" class="text-uppercase text-white p-5">Conoce
+                            más</a>
+                    </div>
+                </div>
+            <?php } ?>
+            <?php if ($imgSet != 'congresos') { ?>
+                <div class="col-md-4 card-event text-white">
+                    <div class="card-bg bg-purple-alpha-meja p-3">
+                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink"
+                             x="0px" y="0px" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;"
+                             xml:space="preserve">
 <path class="svg" d="M446.2,109.2c-2.8-49.9-60.4-78-130-88.6c-27.4-4.2-56.9-4.9-85.8-3.5c-28.8,1.4-56.9,6.3-81.5,13.4
 	c-52.7,15.5-90,41.5-87.2,78v1.4l-2.1,24.6v11.9v12.6l-11.2-4.9c0,0-0.7,0-0.7-0.7H47h-0.7H35c-2.1,0-3.5,0.7-4.2,2.1
 	c-1.4,0.7-2.1,2.8-2.1,4.2v67.5c0,2.1,0.7,3.5,2.1,4.2l0,0c0.7,1.4,2.1,2.1,4.2,2.1h11.2c0.7,0,0.7,0,0.7,0c0.7,0,0.7,0,1.4-0.7
@@ -199,20 +260,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	z M340.8,379.1c4.9,4.2,10.5,7,17.6,7c6.3,0,12.7-2.8,16.9-7l0,0c4.9-4.2,7-10.6,7-17.6c0-6.3-2.1-12.6-7-16.9l0,0
 	c-4.2-4.2-10.5-7-16.9-7c-7,0-12.7,2.8-17.6,7c-4.2,4.2-7,10.5-7,16.9C333.7,368.6,336.6,374.9,340.8,379.1L340.8,379.1z"/>
 </svg>
-
-            <h1 class="h4 pt-3">Congresos</h1>
-            <p class="pt-2 pb-2">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de
-                texto.
-            </p>
-            <a href="<?php echo base_url('congresos'); ?>" class="text-uppercase small text-white">Conoce más
-                <i class="fa fa-long-arrow-right ml-3"></i>
-            </a>
-        </div>
-        <div class="col-6 col-md-3 mt-5">
-            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                 x="0px" y="0px" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
+                        <h4 class="p-2">Congresos</h4>
+                        <p>Lorem ipsum dolor sit amet, consetetuer adipiscing elit, sed diam nonumy nibh euismod
+                            tincidunt
+                            ut
+                            laoreet</p>
+                        <a href="<?php echo base_url('congresos'); ?>" class="text-uppercase text-white p-5">Conoce
+                            más</a>
+                    </div>
+                </div>
+            <?php } ?>
+            <?php if ($imgSet != 'convenciones') { ?>
+                <div class="col-md-4 card-event">
+                    <div class="card-bg bg-white-alpha-meja p-3">
+                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink"
+                             x="0px" y="0px" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;"
+                             xml:space="preserve">
 <g>
-    <path class="svg" d="M126.1,265.3c-8.8-6.1-18.9-10.1-29.6-12.1c8.1-2.7,15.5-7.4,21.6-13.5c10.8-10.1,16.8-24.3,16.8-39.8
+    <path d="M126.1,265.3c-8.8-6.1-18.9-10.1-29.6-12.1c8.1-2.7,15.5-7.4,21.6-13.5c10.8-10.1,16.8-24.3,16.8-39.8
 		c0-14.8-6.1-28.3-15.5-38.4c-44.3-36-80.2-0.7-80.2-0.7C29.1,171,23,184.5,23,200c0,15.5,6.1,29.6,16.2,39.8
 		c6.7,6.1,14.8,11.4,23.6,14.1c-15.5,3.4-29,10.8-39.7,21.6C8.2,290.2-0.6,309.8-0.6,332v49.2c0,8.8,3.4,16.2,8.8,21.6
 		c5.4,5.4,13.5,8.8,21.6,8.8h103.7h7.4v-7.4V361c0-9.4,1.3-18.8,4-27.6c2-8.8,6.1-17.5,10.8-25.6l2-3.4l-2-3.4
@@ -221,7 +287,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		c-7.4,7.4-17.5,12.1-28.3,12.1C67.5,240.4,57.4,235.7,50.6,228.3z M129.5,329.3c-2.7,10.1-4.1,20.9-4.1,31.7v35H29.8
 		c-4,0-7.4-1.3-10.1-4c-2.7-2.7-4.7-6.8-4.7-10.8V332c0-17.5,7.4-33.7,18.9-45.8c11.5-11.4,27.6-18.8,45.1-18.8h3.4
 		c12.8,0,25.6,4,35.7,10.8c9.4,6.7,16.8,15.5,22.2,25.6C135.5,311.8,132.2,320.6,129.5,329.3z"/>
-    <path class="svg" d="M476.4,274.7c-11.5-11.4-26.3-19.5-42.4-22.2c8.1-3.4,15.5-8.1,21.6-14.1h0.7c10.1-10.1,16.2-23.6,16.2-39.1
+    <path d="M476.4,274.7c-11.5-11.4-26.3-19.5-42.4-22.2c8.1-3.4,15.5-8.1,21.6-14.1h0.7c10.1-10.1,16.2-23.6,16.2-39.1
 		c0-15.5-6.1-29.6-16.2-39.8c-10.1-9.4-22.9-15.5-37.1-16.2c0.2-0.1,0.4-0.1,0.7-0.1c-12.4-0.7-27.1,3-43.1,16.3
 		c-10.1,10.1-16.2,24.3-16.2,39.8c0,15.5,6.1,29,16.2,39.1c6.7,6.7,14.8,11.4,23.6,14.1c-10.1,2-19.5,6.1-27.6,12.1
 		c-13.5,8.7-23.6,21.5-29.6,35.7l-1.3,4l1.3,3.4c4.7,8.1,8.7,16.2,11.5,25.6c2,8.8,3.4,18.2,3.4,27.6v41.8v7.4l7.4,0.7h0.7h0.7h0.7
@@ -230,7 +296,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		c7.4,6.7,12.1,16.8,12.1,28.3c0,10.8-4.7,20.9-12.1,28.3c-7.4,7.4-17.5,11.5-28.3,11.5C405,239,394.9,235,388.2,227.6z
 		 M483.8,386.6c0,2-0.7,4-2,6.1c-2,1.3-4.1,2.7-6.7,2.7H373.4V361c0-10.8-1.3-21.5-4-31.7c-2.7-9.4-6.1-18.2-10.8-26.3
 		c5.4-10.1,12.8-18.9,22.9-25.6c10.1-6.7,22.2-10.8,35-10.8h3.4c17.5,0,33.7,7.4,45.1,18.9c12.1,11.4,18.9,27.6,18.9,45.1V386.6z"/>
-    <path class="svg" d="M251.4,256.5h-0.7c18.2-1.3,35-8.8,47.2-20.9c13.5-13.5,21.6-31.7,21.6-51.2c0-20.2-8.1-38.4-21.6-51.2
+    <path d="M251.4,256.5h-0.7c18.2-1.3,35-8.8,47.2-20.9c13.5-13.5,21.6-31.7,21.6-51.2c0-20.2-8.1-38.4-21.6-51.2
 		c-12.8-13.5-31-21.5-51.2-21.5c-19.5,0-37.7,8.1-51.2,21.5c-12.8,12.8-20.9,31-20.9,51.2c0,19.5,8.1,37.7,20.9,51.2
 		c12.8,12.1,29.6,20.2,48.5,20.9c-26.9,0.7-51.9,12.1-70.7,31C154.4,306.4,143,332,143,361v66c0,10.8,4,20.2,11.5,27.6
 		c6.7,6.7,16.2,10.8,26.9,10.8h144.8c8.1,0,15.5-3.4,20.9-8.8c6.1-5.4,9.4-12.8,9.4-20.9V361c0-29-12.1-54.6-31-73.4
@@ -241,80 +307,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		c24.9,0,47.2,10.1,63.3,26.3c15.5,16.2,25.6,38.4,25.6,62.6V435.7z"/>
 </g>
 </svg>
-            <h1 class="h4 pt-3">Convenciones</h1>
-            <p class="pt-2 pb-2">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de
-                texto.
-            </p>
-            <a href="<?php echo base_url('convenciones'); ?>" class="text-uppercase small text-white">Conoce más
-                <i class="fa fa-long-arrow-right ml-3"></i>
-            </a>
-        </div>
-    </div>
-</div>
-
-<div id="about" class="container">
-    <div class="row no-gutters min-height">
-        <div class="col-sm-12 col-md-12 col-lg-4 bg-white text-center pt-5 pb-3 pl-2 pr-2">
-            <h2 class="text-uppercase">Misión<br/>Corporativa</h2>
-            <p class="pt-2 pl-4 pr-4">Ingrear soluciones de alto contenido de valor agregado de acuerdo a sus
-                necesidades. logrando así nos
-                considere su
-                proveedor de confianza.</p>
-        </div>
-        <div class="col-sm-12 col-md-12 col-lg-8 over-hide over-image">
-            <div class="img_1"></div>
-        </div>
-    </div>
-    <div class="row no-gutters">
-        <div class="col-sm-12 col-md-12 col-lg-8 over-hide over-image">
-            <div class="img_2"></div>
-        </div>
-        <div class="col-sm-12 col-md-12 col-lg-4 bg-white text-center pt-4 pb-3 pl-2 pr-2">
-            <h2 class="text-uppercase">Contamos con</h2>
-            <p class="pt-2 pl-3 pr-3">
-                Chefs de alto nivel <br/>
-                Capitanes <br/>
-                Edecanes <br/>
-                Prestigiados Músicos, Cómicos, etc. <br/>
-                Traductores <br/>
-                Profesionales en iluminación y sonido <br/>
-                Equipo de banquetes <br/>
-                Valet Parking <br/>
-                Seguridad <br/>
-                Reconocidos Decoradores
-            </p>
-        </div>
-    </div>
-</div>
-<div class="container-fluid bg-white">
-    <div class="container">
-        <div class="row no-gutters">
-            <div class="col-sm-12 col-md-12 col-lg-4 bg-white">
-                <div class="img_3"></div>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-8">
-                <div class="h-50 over-hide">
-                    <div class="img_4"></div>
+                        <h4 class="p-2">Convenciones</h4>
+                        <p>Lorem ipsum dolor sit amet, consetetuer adipiscing elit, sed diam nonumy nibh euismod
+                            tincidunt
+                            ut
+                            laoreet</p>
+                        <a href="<?php echo base_url('convenciones'); ?>" class="text-uppercase text-dark p-5">Conoce
+                            más</a>
+                    </div>
                 </div>
-                <div class="h-50 w-100 bg-black text-white pt-4 pb-3 pl-4 pr-4">
-                    <h2 class="text-uppercase pt-2 pl-3 pr-3">Experiencia</h2>
-                    <p class="pt-2 pl-3 pr-3">
-                        · Contamos con una experiencia de 6 años en el medio<br/>
-                        · Realización de Eventos desde 10 hasta 4000 personas.
-                        · Capacidad de Realización de eventos simultáneos.
-                        · Contamos con clientes en la iniciativa privada tales como Afore Banamex, Banco de México, ADO,
-                        Inbursa, Herdez, Red Uno, Pionner, Hospital ABC, entre muchos otros.<br/>
-                        · Algunos de nuestros clientes en el Instituto Federal Electoral, ISSSTE, El gobierno del
-                        Distrito Federal, La Secretaría de Desarrollo Social del Distrito Federal, entre otros. <br/>
-                    </p>
-                </div>
-            </div>
+            <?php } ?>
         </div>
-    </div>
-</div>
-
-<div id="galeria" class="container-fluid p-relative p-0 galeria-main">
-    <div class="w-100 h-100">
     </div>
     <div class="row no-gutters">
         <div class="l-triangle"></div>

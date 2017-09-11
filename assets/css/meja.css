@@ -81,6 +81,10 @@
     background: #072C47;
 }
 
+.bg-blue-alpha-meja {
+    background: rgba(7, 44, 71, .8);
+}
+
 .border-right-2 {
     width: 2px;
 }
@@ -142,7 +146,7 @@ svg {
 }
 
 .over-image {
-    height: 350px;
+    height: auto;
 }
 
 .over-hide img {
@@ -182,6 +186,104 @@ svg {
     right: 0;
 }
 
+.btn-send {
+    background: #cf9e55;
+}
+
+.bg-gold-alpha-meja {
+    background: rgba(207, 158, 85, .9)
+}
+
+.bg-purple-alpha-meja {
+    background: rgba(113, 10, 75, .9)
+}
+
+.bg-white-alpha-meja {
+    background: rgba(255, 255, 255, .9)
+}
+
+.card-event a {
+    text-decoration: none;
+}
+
+.galeria-detail {
+    background-image: url("../img/galeria_1.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 1000px;
+}
+
+.galeria-main {
+    background-image: url("../img/galeria_1.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 1000px;
+}
+
+.detail-carousel {
+    height: 200px;
+}
+
+.img-carousel {
+    background-size: cover;
+    background-position: center;
+}
+
+.card-event {
+    height: 260px;
+    text-align: center;
+}
+
+.card-bg {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+}
+
+.card-event:nth-child(2) {
+    top: 0px;
+}
+
+.img_1 {
+    background-image: url("../img/meja_1.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 200px;
+}
+
+.img_2 {
+    background-image: url("../img/meja_2.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 400px;
+}
+.img_3 {
+    background-image: url("../img/meja_4.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 0px;
+}
+.img_4 {
+    background-image: url("../img/meja_3.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 400px;
+}
+.min-height{
+    min-height: 350px;
+}
 @media (min-width: 576px) {
     .bg-image {
         height: 350px;
@@ -196,6 +298,32 @@ svg {
     .white-line {
         height: 15px;
     }
+
+    .galeria-detail {
+        background-image: url("../img/galeria_1.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 900px;
+    }
+
+    .galeria-main {
+        background-image: url("../img/galeria_1.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 900px;
+    }
+
+    .detail-carousel {
+        height: 300px;
+    }
+
+    .card-event {
+        height: 240px;
+        text-align: center;
+    }
+
 }
 
 @media (min-width: 768px) {
@@ -211,6 +339,43 @@ svg {
     .white-line {
         height: 15px;
     }
+
+    .galeria-detail {
+        background-image: url("../img/galeria_1.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 700px;
+    }
+
+    .galeria-main {
+        background-image: url("../img/galeria_1.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 900px;
+    }
+
+    .detail-carousel {
+        height: 500px;
+    }
+
+    .card-event {
+        height: 200px;
+        text-align: center;
+    }
+
+    .card-bg {
+        position: absolute;
+        left: -20px;
+        right: -20px;
+        bottom: -20px;
+        top: -20px;
+    }
+
+    .card-event:nth-child(2) {
+        top: 60px;
+    }
 }
 
 @media (min-width: 992px) {
@@ -225,6 +390,37 @@ svg {
 
     .white-line {
         height: 15px;
+    }
+    .img_1 {
+        background-image: url("../img/meja_1.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+    .img_2 {
+        background-image: url("../img/meja_2.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 100%;
+    }
+    .img_3 {
+        background-image: url("../img/meja_4.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+    }
+    .img_4 {
+        background-image: url("../img/meja_3.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 100%;
     }
 }
 
